@@ -20,19 +20,10 @@ public class JeuNombreServlet extends HttpServlet {
         // Si c'est la premiere fois : la session est vide donc l'objet est null
         if(partie == null){
             partie = new Partie();
+             // Sauvegarder l'état du jeu dans le session
+            request.getSession().setAttribute("partie", partie);
         }
-        
-        // jouer
-        // mettre à jour l'état du jeu
-        String nombreJoueurString = request.getParameter("nombre");
-        int nombreJoueur = Integer.parseInt(nombreJoueurString);
-        
-        ResultatProposition resultat = partie.jouer(nombreJoueur);
-       
-        
-        // Sauvegarder l'état du jeu dans le session
-        request.getSession().setAttribute("partie", partie);
-
+  
         
         /*     
         switch(resultat) {
@@ -51,8 +42,8 @@ public class JeuNombreServlet extends HttpServlet {
         }
         */
    
-        request.setAttribute("nombreJoueur", nombreJoueur);
-        request.setAttribute("resultat", resultat);
+        request.getAttribute("nombreJoueur");
+        request.getAttribute("resultat");
         request.getRequestDispatcher("WEB-INF/hello.jsp").forward(request, response);
   }
     
@@ -63,15 +54,15 @@ public class JeuNombreServlet extends HttpServlet {
         Partie partie = (Partie)request.getSession().getAttribute("partie");
         
         // récupération des valeurs des inputs envoyés avec le <form> HTML
-        String prenom = request.getParameter("prenom");
-        String nom = request.getParameter("nom");
+        String nombreJoueurString = request.getParameter("nombre");
+        int nombreJoueur = Integer.parseInt(nombreJoueurString);
         
-        
-        
-        
-//        response.getWriter().write("<h1>Prénom:</h1>"+prenom);
-//        response.getWriter().write("<h1>Nom:</h1>"+nom);
-
+          // jouer       
+       ResultatProposition resultat = partie.jouer(nombreJoueur);
+       // sauvegarder la partie
+       request.getSession().setAttribute("partie", partie);
+       request.getSession().setAttribute("nombreJoueur", nombreJoueur);
+       request.getSession().setAttribute("resultat", resultat);
 
         doGet(request, response);
     }

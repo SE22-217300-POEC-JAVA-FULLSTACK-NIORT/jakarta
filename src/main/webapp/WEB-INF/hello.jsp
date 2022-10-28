@@ -8,11 +8,9 @@
     <body>
         <h1>Jeu du nombre</h1>
         
-        <form action="nombre" method="POST">
-            
-            Prenom:<input type="text" name="prenom"><br/>
-            Nom:<input type="text" name="nom"><br/>
-            <input type="submit" value="Envoyer">
+        <form action="nombre" method="POST">        
+            Choisissez votre proposition:<input type="text" name="nombre"><br/>
+            <input type="submit" value="Jouer">
         </form>
         
         
