@@ -3,11 +3,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Jeu du nombre</title>
     </head>
     <body>
-        <h1>Hello JSP</h1>
-        <p> ${resultat} </p>
+        <h1>Jeu du nombre</h1>
+        <p> Nombre joué: ${ nombreJoueur } </p>
+        <p> Résultat : ${resultat} </p>
+         <p>Nombre de tentatives restantes:  ${partie.getNombreTentativesRestantes()} </p>
          <p>Nombre à deviner:  ${partie.getNombreADeviner()} </p>
     </body>
 </html>

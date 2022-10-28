@@ -56,7 +56,7 @@ public class JeuNombreServlet extends HttpServlet {
         }
         */
    
-       // request.setAttribute("partie", partie);
+        request.setAttribute("nombreJoueur", nombreJoueur);
         request.setAttribute("resultat", resultat);
         request.getRequestDispatcher("WEB-INF/hello.jsp").forward(request, response);
   }

@@ -34,12 +34,13 @@ public class Partie {
             nombreTentativesRestantes = 3;
             return ResultatProposition.Gagne;
         } else {
+            nombreTentativesRestantes--;
             if (nombreTentativesRestantes == 0) {
                 nombreTentativesRestantes = 3;
                 nombreADeviner = new Random().nextInt(1, 10);
                 return ResultatProposition.Perdu;
             } else {
-                nombreTentativesRestantes--;
+               
                 if (nombreADeviner < nombreJoueur)
                 {
                     return ResultatProposition.TropGrand;
