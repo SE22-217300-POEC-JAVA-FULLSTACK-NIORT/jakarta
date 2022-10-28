@@ -2,6 +2,7 @@ package com.poe.poe2220718.poe20221004.demo1;
 
 import java.io.IOException;
 import java.util.Random;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class JeuNombreServlet extends HttpServlet {
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {  
         // récupération d'un objet dans la Session
         Partie partie = (Partie)request.getSession().getAttribute("partie");
@@ -35,10 +36,10 @@ public class JeuNombreServlet extends HttpServlet {
         
         
         // informations retournées au navigateur
-        response.getWriter().write("<p>nombreJoueur</p>"+nombreJoueur);
-        response.getWriter().write("<p>nombreADeviner:"+partie.getNombreADeviner()+"</p>");
-        response.getWriter().write("<p>nombreTentativesRestantes:"+partie.getNombreTentativesRestantes()+"</p>");
-        
+//        response.getWriter().write("<p>nombreJoueur</p>"+nombreJoueur);
+//        response.getWriter().write("<p>nombreADeviner:"+partie.getNombreADeviner()+"</p>");
+//        response.getWriter().write("<p>nombreTentativesRestantes:"+partie.getNombreTentativesRestantes()+"</p>");
+   /*     
         switch(resultat) {
             case Gagne:
                 response.getWriter().write("<h1>gagné</h1>");
@@ -53,6 +54,10 @@ public class JeuNombreServlet extends HttpServlet {
                 response.getWriter().write("<h1>trop petit</h1>");
                 break;
         }
-        
+        */
+   
+       // request.setAttribute("partie", partie);
+        request.setAttribute("resultat", resultat);
+        request.getRequestDispatcher("WEB-INF/hello.jsp").forward(request, response);
   }
 }
