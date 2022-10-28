@@ -32,14 +32,9 @@ public class JeuNombreServlet extends HttpServlet {
         
         // Sauvegarder l'état du jeu dans le session
         request.getSession().setAttribute("partie", partie);
-       
+
         
-        
-        // informations retournées au navigateur
-//        response.getWriter().write("<p>nombreJoueur</p>"+nombreJoueur);
-//        response.getWriter().write("<p>nombreADeviner:"+partie.getNombreADeviner()+"</p>");
-//        response.getWriter().write("<p>nombreTentativesRestantes:"+partie.getNombreTentativesRestantes()+"</p>");
-   /*     
+        /*     
         switch(resultat) {
             case Gagne:
                 response.getWriter().write("<h1>gagné</h1>");
@@ -60,4 +55,24 @@ public class JeuNombreServlet extends HttpServlet {
         request.setAttribute("resultat", resultat);
         request.getRequestDispatcher("WEB-INF/hello.jsp").forward(request, response);
   }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    { 
+        // récupération d'un objet dans la Session
+        Partie partie = (Partie)request.getSession().getAttribute("partie");
+        
+        // récupération des valeurs des inputs envoyés avec le <form> HTML
+        String prenom = request.getParameter("prenom");
+        String nom = request.getParameter("nom");
+        
+        
+        
+        
+//        response.getWriter().write("<h1>Prénom:</h1>"+prenom);
+//        response.getWriter().write("<h1>Nom:</h1>"+nom);
+
+
+        doGet(request, response);
+    }
 }
